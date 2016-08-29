@@ -453,7 +453,8 @@ function rules.variableUsageAllowed(node, context)
     if not arguments then return end
 
     for field in pairs(arguments) do
-      local parentField = getParentField(context, field)
+      -- !!!!!!!! NOT GOOD ... why like this
+      local parentField = getParentField(context, field, 1) or getParentField(context, field, 0)
       for i = 1, #arguments[field] do
         local argument = arguments[field][i]
         if argument.value.kind == 'variable' then
