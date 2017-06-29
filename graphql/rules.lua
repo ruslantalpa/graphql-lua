@@ -526,7 +526,7 @@ function rules.variableUsageAllowed(node, context)
             return false
           end
 
-          if not isTypeSubTypeOf(variableType, argumentType) then
+          if not isTypeSubTypeOf(variableType, argumentType.kind or argumentType) then
             error('Variable type mismatch')
           end
         end
