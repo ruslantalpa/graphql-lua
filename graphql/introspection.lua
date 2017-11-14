@@ -241,9 +241,9 @@ __Type = types.object({
 
       interfaces = {
         kind = types.list(types.nonNull(__Type)),
-        resolve = function(kind)
+        resolve = function(kind, arguments, context)
           if kind.__type == 'Object' then
-            return kind.interfaces or {}
+            return kind.interfaces or context.schema.__emptyList
           end
         end
       },
