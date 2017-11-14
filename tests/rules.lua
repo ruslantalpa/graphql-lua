@@ -331,4 +331,11 @@ describe('rules', function()
       expectError(nil, 'query @skip {}')
     end)
   end)
+
+  describe('variablesAreUsed', function()
+    local message = 'Unused variable "arg"'
+    it('fails if a variables is not used', function()
+      expectError(message, 'query test($arg: String) {}')
+    end)
+  end)
 end)
